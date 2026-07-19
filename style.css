@@ -1,0 +1,256 @@
+/* ==========================================================================
+   Petites Annonces — feuille de style
+   Palette : encre #16202a · fond #f4f6f4 · accent #0f9d8f · corail #ef5b5b
+   ========================================================================== */
+
+:root {
+  --ink: #16202a;
+  --ink-soft: #55646f;
+  --bg: #f4f6f4;
+  --card: #ffffff;
+  --line: #e2e7e3;
+  --accent: #0f9d8f;
+  --accent-dark: #0b7c72;
+  --coral: #ef5b5b;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(22, 32, 42, .06), 0 8px 24px rgba(22, 32, 42, .05);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.wrap {
+  width: min(1040px, 92vw);
+  margin-inline: auto;
+}
+
+/* --- En-tête ------------------------------------------------------------- */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+}
+.logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -.01em;
+}
+.logo-mark { color: var(--accent); }
+.counter {
+  font-size: .85rem;
+  color: var(--ink-soft);
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+/* --- Mise en page à deux colonnes --------------------------------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 32px;
+  padding-block: 40px;
+  align-items: start;
+}
+
+/* --- Panneau formulaire -------------------------------------------------- */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 24px;
+}
+.panel-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  margin: 0 0 4px;
+}
+.panel-sub {
+  margin: 0 0 22px;
+  color: var(--ink-soft);
+  font-size: .9rem;
+}
+
+.form { display: grid; gap: 16px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field { display: grid; gap: 6px; }
+.field label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+input, select, textarea {
+  font: inherit;
+  color: var(--ink);
+  background: #fbfcfb;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  width: 100%;
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(15, 157, 143, .15);
+}
+textarea { resize: vertical; }
+
+.form-error {
+  margin: 0;
+  color: var(--coral);
+  font-size: .82rem;
+  font-weight: 500;
+}
+
+.btn-primary {
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background .15s, transform .05s;
+}
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-primary:active { transform: translateY(1px); }
+
+/* --- Liste des annonces -------------------------------------------------- */
+.listing-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.listing-head h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  margin: 0;
+}
+.btn-ghost {
+  font: inherit;
+  font-size: .85rem;
+  color: var(--coral);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+.btn-ghost:hover { text-decoration: underline; }
+
+.empty {
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.empty p { margin: 0; }
+.empty-hint { font-size: .85rem; margin-top: 6px !important; opacity: .8; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* --- Carte d'annonce ----------------------------------------------------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: pop .18s ease-out;
+}
+@keyframes pop {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card-tag {
+  align-self: flex-start;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  background: rgba(15, 157, 143, .1);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.card-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+.card-price {
+  font-weight: 700;
+  color: var(--accent-dark);
+  font-size: 1.1rem;
+}
+.card-desc {
+  font-size: .88rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: .8rem;
+  color: var(--ink-soft);
+}
+.card-delete {
+  font: inherit;
+  font-size: .8rem;
+  color: var(--coral);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.card-delete:hover { text-decoration: underline; }
+
+/* --- Pied de page -------------------------------------------------------- */
+.site-footer {
+  padding-block: 28px 40px;
+  color: var(--ink-soft);
+  font-size: .82rem;
+  text-align: center;
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; }
+  .panel { position: static; }
+}
+
+/* Accessibilité : on respecte la préférence de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; }
+  * { transition: none !important; }
+}
