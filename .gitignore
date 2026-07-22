@@ -9,3 +9,4 @@ Thumbs.db
 
 # Dépendances (au cas où tu ajoutes du Node plus tard)
 node_modules/
+tmp/todo.txt
